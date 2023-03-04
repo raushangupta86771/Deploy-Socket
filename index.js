@@ -1,8 +1,8 @@
-const port = process.env.PORT || 8900;
+const port = "https://socket-ecommerce.onrender.com" || 8900;
 // console.log(process.env.ORIGIN_REACT_APP)
 const io = require('socket.io')(port, {
     cors: {
-        origin: process.env.ORIGIN_REACT_APP || "http://localhost:3000"
+        origin: "https://funny-gecko-10a63a.netlify.app" || "http://localhost:3000"
     },
 })
 
