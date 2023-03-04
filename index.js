@@ -2,7 +2,7 @@ const port = process.env.PORT || 8900;
 // console.log(process.env.ORIGIN_REACT_APP)
 const io = require('socket.io')(port, {
     cors: {
-        origin: process.env.ORIGIN_REACT_APP
+        origin: process.env.ORIGIN_REACT_APP || "http://localhost:3000"
     },
 })
 
@@ -23,7 +23,7 @@ const getUser = (receiverId) => {
 }
 
 io.on("connection", (socket) => {
-
+    
     //when user connected
     console.log("a user connected")
     // io.emit("welcome","hello this is socket server")
@@ -36,7 +36,7 @@ io.on("connection", (socket) => {
     //send and get message
     socket.on("sendMessage",({senderId,receiverId, text})=>{
         const user = getUser(receiverId);
-        console.log(receiverId)
+        console.log("hello")
         io.to(user?.socketId).emit("getMessage",{
             senderId,text
         })
